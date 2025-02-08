@@ -16,3 +16,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+from lojaAdmin.wsgi import application
+app = application  # Vercel precisa disso
