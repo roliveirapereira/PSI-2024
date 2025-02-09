@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url # type: ignore
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -76,12 +77,19 @@ WSGI_APPLICATION = 'lojaAdmin.wsgi.app'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+from urllib.parse import quote_plus
+
+
+password = "ROdriguin12345!"
+password_encoded = quote_plus(password)
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'data', 'db.sqlite3'),
-    }
+    'default': dj_database_url.config(
+        default=f"postgresql://postgres:{password_encoded}@db.wuhnvwrcljlicafmskip.supabase.co:5432/postgres"
+    )
 }
+
+
 
 
 # Password validation
@@ -132,7 +140,7 @@ LOGOUT_REDIRECT_URL = '/login'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'lojaAdmin.settings.production')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'lojaAdmin.settings')
 
 LOGGING = {
     'version': 1,
