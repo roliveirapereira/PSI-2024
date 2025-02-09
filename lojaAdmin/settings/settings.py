@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-=$z45#oge0&lsp!s43f490!)_oe-y99jrd-3oi!*)p4n5m($n5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -71,8 +71,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'lojaAdmin.wsgi.application'
-
+WSGI_APPLICATION = 'lojaAdmin.wsgi.app'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
